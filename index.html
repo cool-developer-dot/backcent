@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Backcent · Every cent back.</title>
+  <meta name="description" content="Backcent finds the money mid-market companies have overpaid their suppliers, gets it back, and checks every new invoice so it never leaves again. You pay us only from money that lands in your bank.">
+  <meta name="theme-color" content="#0B1F3A">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Backcent">
+  <meta property="og:title" content="You’ve overpaid your suppliers. We get it back.">
+  <meta property="og:description" content="Free AP Leakage Scan. Recovery at 20% of cash recovered. Monitoring from $3,500/month. You pay us only from money that lands in your bank.">
+  <meta property="og:url" content="https://backcent.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3h8l4.5 4.5V21h-12.5z"/><path d="M14.5 3v4.5H19M9.5 11.5h6M9.5 14.5h6M9.5 17.5h4"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 21V4h10v17M15 9h4v12M3 21h18"/><path d="M8 7.5h1M11 7.5h1M8 11h1M11 11h1M8 14.5h1M11 14.5h1M9 21v-3h2v3"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="12.5" rx="2"/><path d="M15.5 8.5V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10.5a2 2 0 0 0 2 2h2.5"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.4v.1"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24"><path d="M5 20v-6M10 20V9.5M15 20V5M20 20v-8.5"/></symbol>
+    <symbol id="i-doc-check" viewBox="0 0 24 24"><path d="M6.5 3h8l4.5 4.5V21h-12.5z"/><path d="M14.5 3v4.5H19M9.5 14l2 2 3.5-4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.3-2.9 8.1-7 9.5-4.1-1.4-7-5.2-7-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19.5 10.5A7.8 7.8 0 0 0 5.6 7.2L4 9"/><path d="M4 4.5V9h4.5"/><path d="M4.5 13.5a7.8 7.8 0 0 0 13.9 3.3L20 15"/><path d="M20 19.5V15h-4.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5V17"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-sign" viewBox="0 0 24 24"><path d="M6.5 3h8l4.5 4.5V21h-12.5z"/><path d="M14.5 3v4.5H19M9 17.5c1.2-1.6 2-2.4 2.6-2.4.8 0 .3 2 1.1 2 .6 0 1.1-.8 2.3-1.1"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5.5M14 11v5.5"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4 7 21l5-2.5 5 2.5-1.6-7.6"/><path d="M9.8 9l1.5 1.5 3-3"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0z"/><path d="M12 12v6.5a2 2 0 0 1-4 0M12 3v.5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9M7.8 5.3l8.4 4.5"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20.5V11l5.5 3.2V11l5.5 3.2V8h3V4h3v16.5z"/><path d="M2 20.5h20M7 17.5h1.5M11.5 17.5H13M16 17.5h1.5"/></symbol>
+    <symbol id="i-health" viewBox="0 0 24 24"><path d="M9 3.5h6V9h5.5v6H15v5.5H9V15H3.5V9H9z"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>
+    <symbol id="i-hat" viewBox="0 0 24 24"><path d="M4.5 16.5a7.5 7.5 0 0 1 15 0"/><path d="M10 9.4V6.5h4v2.9"/><path d="M3 16.5h18v2.5H3z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-user-check" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.6 3.1-6 7-6 1.4 0 2.6.3 3.7.8M15.5 18l2 2 4-4.5"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5M4.5 9.5h15M6 10v7.5M10 10v7.5M14 10v7.5M18 10v7.5M3.5 20.5h17"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L4 20z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+<!-- ============================== NAV ============================== -->
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="logo" href="#top" aria-label="Backcent, back to top">Back<span>cent</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#find" data-navlink>What we find</a>
+      <a href="#how" data-navlink>How it works</a>
+      <a href="#pricing" data-navlink>Pricing</a>
+      <a href="#security" data-navlink>Security</a>
+      <a href="#faq" data-navlink>FAQ</a>
+    </nav>
+    <a class="btn btn--primary btn--sm nav__cta" href="#scan">Get a free scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle>
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true" inert>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#find"><span>01</span>What we find</a>
+    <a href="#how"><span>02</span>How it works</a>
+    <a href="#pricing"><span>03</span>Pricing</a>
+    <a href="#security"><span>04</span>Security</a>
+    <a href="#faq"><span>05</span>FAQ</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--primary btn--lg btn--block" href="#scan">Get a free AP Leakage Scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <p>No setup fee · No software to install</p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================== HERO ============================== -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__glow hero__glow--2"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="pill" data-reveal style="--d:0ms"><span class="pill__dot" aria-hidden="true"></span>AP overpayment recovery and monitoring</p>
+
+      <h1 class="hero__title">
+        <span class="line"><span style="--i:0">You’ve overpaid</span></span>
+        <span class="line"><span style="--i:1">your suppliers.</span></span>
+        <span class="line line--teal"><span style="--i:2">We get it back.</span></span>
+      </h1>
+
+      <p class="hero__lede" data-reveal style="--d:380ms">Backcent audits every invoice you paid in the last three years, recovers the duplicates, missed credits and overcharges, and then checks every new invoice before it’s paid.</p>
+
+      <p class="hero__promise" data-reveal style="--d:480ms">
+        <svg aria-hidden="true"><use href="#i-shield"/></svg>
+        <span>You pay us only from money that lands in your bank.</span>
+      </p>
+
+      <div class="hero__ctas" data-reveal style="--d:580ms">
+        <a class="btn btn--primary btn--lg" href="#scan">Get a free AP Leakage Scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost btn--lg" href="#how">See how it works <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <ul class="trust" data-reveal style="--d:680ms">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>No setup fee</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>No software to install</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>First findings in 10 business days</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual" data-reveal="right" style="--d:250ms">
+      <div class="float float--a" aria-hidden="true"><svg><use href="#i-doc"/></svg><span><b>36 months</b> of paid invoices</span></div>
+      <div class="float float--b" aria-hidden="true"><svg><use href="#i-check"/></svg><span>You approve every claim</span></div>
+
+      <div class="engine" data-engine>
+        <div class="engine__chrome">
+          <span class="engine__status"><span class="live" aria-hidden="true"></span><span data-e-status>Scanning</span></span>
+          <span class="engine__supplier" data-e-supplier>Riverside Office Supply</span>
+          <span class="engine__note">Illustrative example</span>
+        </div>
+
+        <div class="engine__panes" data-e-panes>
+          <div class="pane" data-e-lpane>
+            <div class="pane__head">
+              <span class="pane__icon"><svg aria-hidden="true"><use href="#i-doc" data-e-licon/></svg></span>
+              <div><p class="pane__title" data-e-ltitle>Your ledger</p><p class="pane__sub" data-e-lsub>Paid invoices</p></div>
+            </div>
+            <ul class="rows" data-e-lrows>
+              <li class="row"><span class="row__desc">A4 copy paper</span><span class="row__amt">$52.00</span><span class="row__meta">INV-10471 · Apr 01</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Desk chairs</span><span class="row__amt">$420.00</span><span class="row__meta">INV-10478 · Apr 03</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Monitor stands</span><span class="row__amt">$240.00</span><span class="row__meta">INV-10493 · Apr 12</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Monitor stands</span><span class="row__amt">$240.00</span><span class="row__meta">INV-1O493 · Apr 15</span><span class="row__mark"></span></li>
+            </ul>
+          </div>
+          <div class="pane" data-e-rpane>
+            <div class="pane__head">
+              <span class="pane__icon"><svg aria-hidden="true"><use href="#i-building" data-e-ricon/></svg></span>
+              <div><p class="pane__title" data-e-rtitle>Supplier statement</p><p class="pane__sub" data-e-rsub>Statement · Apr 30</p></div>
+            </div>
+            <ul class="rows" data-e-rrows>
+              <li class="row"><span class="row__desc">A4 copy paper</span><span class="row__amt">$52.00</span><span class="row__meta">INV-10471</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Desk chairs</span><span class="row__amt">$420.00</span><span class="row__meta">INV-10478</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Monitor stands</span><span class="row__amt">$240.00</span><span class="row__meta">INV-10493</span><span class="row__mark"></span></li>
+              <li class="row"><span class="row__desc">Unapplied cash</span><span class="row__amt">$240.00 CR</span><span class="row__meta">Received Apr 15</span><span class="row__mark"></span></li>
+            </ul>
+          </div>
+          <div class="beam" aria-hidden="true"></div>
+        </div>
+
+        <svg class="wires" aria-hidden="true" data-e-wires>
+          <path class="wire" pathLength="1" d=""/>
+          <path class="wire" pathLength="1" d=""/>
+          <path class="wire wire--trunk" pathLength="1" d=""/>
+          <circle class="wnode" r="4.5" cx="0" cy="0"/>
+          <circle class="wnode" r="4.5" cx="0" cy="0"/>
+          <circle class="wnode wnode--j" r="5" cx="0" cy="0"/>
+          <circle class="wnode wnode--end" r="4" cx="0" cy="0"/>
+        </svg>
+
+        <div class="finding" data-e-finding>
+          <span class="finding__icon"><svg aria-hidden="true"><use href="#i-copy" data-e-ficon/></svg></span>
+          <div class="finding__body">
+            <div class="finding__head"><p class="finding__title" data-e-ftitle>Duplicate payment</p><span class="tag" data-e-ftag>Duplicate</span></div>
+            <p class="finding__desc" data-e-fdesc>INV-10493 was keyed twice, once with a letter O. The supplier is holding the second payment as unapplied cash.</p>
+            <div class="finding__chips"><span><svg aria-hidden="true"><use href="#i-check"/></svg>Evidence attached</span><span><svg aria-hidden="true"><use href="#i-check"/></svg>Analyst verified</span></div>
+          </div>
+          <div class="finding__amt"><span>Recoverable</span><strong data-e-famt>$240.00</strong></div>
+        </div>
+
+        <div class="engine__tabs" role="tablist" aria-label="Example findings">
+          <button class="etab" role="tab" type="button" aria-selected="true" data-e-tab><span class="etab__bar"><i></i></span>Duplicate</button>
+          <button class="etab" role="tab" type="button" aria-selected="false" tabindex="-1" data-e-tab><span class="etab__bar"><i></i></span>Unused credit</button>
+          <button class="etab" role="tab" type="button" aria-selected="false" tabindex="-1" data-e-tab><span class="etab__bar"><i></i></span>Price drift</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="systems" data-reveal style="--d:800ms">
+      <p class="systems__label">Works with</p>
+      <div class="systems__track">
+        <ul class="systems__list">
+          <li>NetSuite</li><li>Microsoft Dynamics</li><li>SAP</li><li>Oracle</li><li>Sage Intacct</li><li>Excel and CSV</li>
+        </ul>
+        <ul class="systems__list systems__list--dup" aria-hidden="true">
+          <li>NetSuite</li><li>Microsoft Dynamics</li><li>SAP</li><li>Oracle</li><li>Sage Intacct</li><li>Excel and CSV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PROBLEM ============================== -->
+<section class="section section--grey problem" id="problem">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>The cost of small mistakes</p>
+        <h2 class="h2" data-split>Every finance team pays some invoices twice.</h2>
+      </div>
+      <p class="problem__aside" data-reveal style="--d:120ms">Credits go unused. Prices drift above the contract. Nobody sees it, because each mistake is small and the pile is huge.</p>
+    </div>
+
+    <ul class="stats" data-counters data-stagger>
+      <li class="stat" data-reveal>
+        <p class="stat__num"><span data-to="0.1" data-dec="1">0.1</span>–<span data-to="0.3" data-dec="1">0.3</span>%</p>
+        <p class="stat__cap">of supplier spend is what recovery audits typically find*</p>
+      </li>
+      <li class="stat" data-reveal>
+        <p class="stat__num stat__num--amber">$<span data-to="300">300</span>k+</p>
+        <p class="stat__cap">sitting in overpayments on $300M of spend, at the benchmark rate</p>
+      </li>
+      <li class="stat" data-reveal>
+        <p class="stat__num"><span data-to="20">20</span>%</p>
+        <p class="stat__cap">our fee, charged only on cash recovered</p>
+      </li>
+      <li class="stat" data-reveal>
+        <p class="stat__num"><span data-to="10">10</span> days</p>
+        <p class="stat__cap">from your data export to a findings report</p>
+      </li>
+    </ul>
+    <p class="footnote" data-reveal>*Industry benchmarks published by PRGX, apexanalytix and Xelix. Your result depends on your data; the free scan tells you your number.</p>
+  </div>
+
+  <div class="flow" data-live aria-hidden="true">
+    <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice">
+      <path class="flow__guide" d="M470 0V220M790 0V220M1110 0V220"/>
+      <path class="flow__line" d="M0 46H300C380 46 400 104 480 104H760C830 104 850 56 930 56H1200"/>
+      <path class="flow__line flow__line--dash" d="M0 92H250C330 92 350 150 430 150H800C870 150 890 120 960 120H1200"/>
+      <path class="flow__line" d="M0 136H420C490 136 510 78 580 78H1200"/>
+      <path class="flow__line" d="M0 184H520C590 184 610 200 680 200H860C930 200 950 166 1020 166H1200"/>
+      <path class="flow__comet" pathLength="100" style="--ft:7.5s;--fd:0s" d="M0 46H300C380 46 400 104 480 104H760C830 104 850 56 930 56H1200"/>
+      <path class="flow__comet" pathLength="100" style="--ft:9s;--fd:-3s" d="M0 92H250C330 92 350 150 430 150H800C870 150 890 120 960 120H1200"/>
+      <path class="flow__comet" pathLength="100" style="--ft:6.5s;--fd:-1.5s" d="M0 136H420C490 136 510 78 580 78H1200"/>
+      <path class="flow__comet" pathLength="100" style="--ft:8.5s;--fd:-5s" d="M0 184H520C590 184 610 200 680 200H860C930 200 950 166 1020 166H1200"/>
+
+      <rect class="flow__doc" x="34" y="52" width="150" height="190" rx="4"/>
+      <rect class="flow__doc" x="70" y="22" width="160" height="220" rx="4"/>
+      <path class="flow__teal" d="M90 42H132"/>
+      <path class="flow__rule" d="M90 60H170M90 76H206M90 92H196M90 108H206M90 124H160M90 140H206M90 156H184M90 172H206M90 188H170"/>
+
+      <rect class="flow__doc flow__doc--dash" x="586" y="56" width="104" height="150" rx="3"/>
+      <path class="flow__teal" d="M600 76H640"/>
+      <path class="flow__rule" d="M600 94H676M600 108H664M600 122H676M600 136H650M600 150H676M600 164H660M600 178H672"/>
+
+      <rect class="flow__doc" x="1010" y="44" width="130" height="200" rx="4"/>
+      <rect class="flow__doc" x="1052" y="22" width="150" height="220" rx="4"/>
+      <path class="flow__teal" d="M1072 42H1114"/>
+      <path class="flow__rule" d="M1072 60H1180M1072 76H1160M1072 92H1186M1072 108H1150M1072 124H1186M1072 140H1170M1072 156H1186"/>
+
+      <circle class="flow__node" cx="480" cy="104" r="4.5"/>
+      <circle class="flow__node" cx="430" cy="150" r="4.5"/>
+      <circle class="flow__node" cx="960" cy="120" r="4.5"/>
+      <circle class="flow__node" cx="860" cy="200" r="4.5"/>
+      <circle class="flow__node flow__node--ring" cx="580" cy="78" r="4"/>
+      <circle class="flow__node flow__node--ring" cx="680" cy="200" r="4"/>
+      <circle class="flow__amber" cx="790" cy="150" r="4.5"/>
+      <circle class="flow__amber flow__amber--b" cx="930" cy="56" r="4.5"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="calc" data-calc data-reveal data-live>
+      <div class="calc__intro">
+        <p class="eyebrow eyebrow--teal">What’s your number?</p>
+        <h3 class="calc__title">Run the benchmark on your own spend.</h3>
+        <p class="calc__text">Move the slider to your annual supplier spend. We apply the published industry range of 0.1–0.3%. The free scan replaces this estimate with your real number.</p>
+        <ul class="calc__points">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>No fee if we find nothing</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>No fee until the cash is in your bank</li>
+        </ul>
+      </div>
+
+      <div class="calc__panel">
+        <div class="calc__row">
+          <label class="calc__label" for="spend">Annual supplier spend</label>
+          <output class="calc__spend" for="spend" data-c="spend">$400M</output>
+        </div>
+        <input class="range" id="spend" type="range" min="0" max="1000" step="1" value="564" data-c-range>
+        <div class="calc__ticks" aria-hidden="true">
+          <span style="--x:0%">$50M</span><span style="--x:18.8%" class="hide-sm">$100M</span><span style="--x:43.6%">$250M</span><span style="--x:62.4%" class="hide-sm">$500M</span><span style="--x:81.2%">$1B</span><span style="--x:100%">$2B+</span>
+        </div>
+
+        <div class="calc__out" aria-live="polite">
+          <div class="calc__cell">
+            <p class="calc__k">Benchmark overpayments</p>
+            <p class="calc__v"><span data-c="low">$400k</span><span class="calc__dash">–</span><span data-c="high">$1.2M</span></p>
+            <p class="calc__s">0.1–0.3% of supplier spend</p>
+          </div>
+          <div class="calc__cell calc__cell--keep">
+            <p class="calc__k">You keep 80%</p>
+            <p class="calc__v calc__v--teal"><span data-c="keepLow">$320k</span><span class="calc__dash">–</span><span data-c="keepHigh">$960k</span></p>
+            <p class="calc__s">Our 20% is charged only on cash recovered</p>
+          </div>
+        </div>
+
+        <div class="split" aria-hidden="true"><span class="split__keep"><i></i>You keep 80%</span><span class="split__fee">20%</span></div>
+
+        <div class="calc__foot">
+          <a class="btn btn--primary" href="#scan">Get your real number, free <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="calc__fine">Industry benchmark, not a Backcent result or a promise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WHAT WE FIND ============================== -->
+<section class="section find" id="find">
+  <div class="container">
+    <div class="find__head">
+      <p class="eyebrow" data-reveal>What we find</p>
+      <h2 class="display" data-split>What we find<span class="dot">.</span></h2>
+      <p class="find__sub" data-reveal>The small errors that add up.</p>
+      <p class="find__intro" data-reveal style="--d:100ms">Most finance teams believe their three-way match catches everything. It catches most things. The rest is small, scattered and invisible until someone looks at three years of data at once.</p>
+    </div>
+
+    <div class="tiles" data-live data-stagger>
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--dup" viewBox="0 0 300 150" aria-hidden="true">
+            <path class="d" d="M124 40H150V59"/>
+            <path class="d" d="M176 110H150V91"/>
+            <g class="ghost"><rect class="c c--ghost" x="182" y="20" width="88" height="122" rx="4"/></g>
+            <rect class="c" x="36" y="14" width="88" height="122" rx="4"/>
+            <text class="t" x="48" y="34">INVOICE</text>
+            <path class="l" d="M48 46H110M48 55H90"/>
+            <text class="s" x="48" y="86">#10428</text>
+            <text class="s" x="48" y="97">Acme Supplies</text>
+            <text class="n" x="48" y="122">$12,450.00</text>
+            <rect class="c" x="176" y="14" width="88" height="122" rx="4"/>
+            <text class="t" x="188" y="34">INVOICE</text>
+            <path class="l" d="M188 46H250M188 55H230"/>
+            <text class="s" x="188" y="86">#77891</text>
+            <text class="s" x="188" y="97">ACME SUPPLY CO.</text>
+            <text class="n" x="188" y="122">$12,450.00</text>
+            <circle class="pulse" cx="150" cy="75" r="16"/>
+            <circle class="ring" cx="150" cy="75" r="16"/>
+            <rect class="ic" x="143" y="67" width="10" height="12" rx="1.6"/>
+            <rect class="ic ic--fill" x="147" y="71" width="10" height="12" rx="1.6"/>
+          </svg>
+        </div>
+        <h3 class="tile__title">Duplicate payments</h3>
+        <p class="tile__text">Same invoice paid twice under two numbers, two vendors, or two systems.</p>
+      </article>
+
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--credit" viewBox="0 0 300 150" aria-hidden="true">
+            <rect class="c" x="24" y="14" width="100" height="122" rx="4"/>
+            <text class="t" x="36" y="34">CREDIT NOTE</text>
+            <path class="l" d="M36 46H110M36 55H92"/>
+            <text class="s" x="36" y="86">CN-32817</text>
+            <text class="s" x="36" y="97">Global Parts Ltd.</text>
+            <text class="n" x="36" y="122">$8,600.00</text>
+            <path class="d" d="M124 75H186"/>
+            <circle class="coin" cx="128" cy="75" r="4"/>
+            <circle class="ring" cx="152" cy="75" r="16"/>
+            <path class="eq" d="M145.5 71.5H158.5M145.5 78.5H158.5"/>
+            <path class="c folder" d="M188 58V52Q188 48 192 48H210L216 54H274Q278 54 278 58V108Q278 112 274 112H192Q188 112 188 108Z"/>
+            <path class="l" d="M200 74H262"/>
+            <text class="t" x="200" y="98">UNAPPLIED</text>
+          </svg>
+        </div>
+        <h3 class="tile__title">Unused vendor credits</h3>
+        <p class="tile__text">Credit notes your suppliers issued that you never took.</p>
+      </article>
+
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--gap" viewBox="0 0 300 150" aria-hidden="true">
+            <rect class="c" x="22" y="14" width="102" height="122" rx="4"/>
+            <text class="t" x="34" y="34">YOUR LEDGER</text>
+            <path class="l" d="M34 46H100"/>
+            <path class="l l--s" d="M34 76H44M34 97H44M34 118H44"/>
+            <text class="n" x="52" y="79">$4,280.00</text>
+            <text class="n" x="52" y="100">$1,125.50</text>
+            <text class="n" x="52" y="121">$980.00</text>
+            <path class="d" d="M132 75H168"/>
+            <path class="arr" d="M136 71L132 75L136 79M164 71L168 75L164 79"/>
+            <rect class="c" x="176" y="14" width="102" height="122" rx="4"/>
+            <text class="t" x="188" y="30">SUPPLIER</text>
+            <text class="t" x="188" y="41">STATEMENT</text>
+            <path class="l" d="M188 52H254"/>
+            <rect class="hl blink" x="182" y="107" width="90" height="20" rx="3"/>
+            <path class="l l--s" d="M188 76H198M188 97H198M188 118H198"/>
+            <text class="n" x="206" y="79">$4,280.00</text>
+            <text class="n" x="206" y="100">$1,125.50</text>
+            <text class="n n--amber" x="206" y="121">$1,320.00</text>
+          </svg>
+        </div>
+        <h3 class="tile__title">Statement gaps</h3>
+        <p class="tile__text">Your ledger vs. the supplier’s statement. The difference is usually yours.</p>
+      </article>
+
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--price" viewBox="0 0 300 150" aria-hidden="true">
+            <rect class="c" x="26" y="28" width="100" height="94" rx="4"/>
+            <text class="t" x="38" y="48">AGREED PRICE</text>
+            <path class="l" d="M38 60H108"/>
+            <text class="n n--lg" x="38" y="104">$52.00</text>
+            <path class="d" d="M126 75H136M164 75H174"/>
+            <g class="bob">
+              <path class="warn" d="M150 59L166 87H134Z"/>
+              <path class="warn-i" d="M150 68V77M150 81.5V82"/>
+            </g>
+            <rect class="c" x="174" y="28" width="100" height="94" rx="4"/>
+            <text class="t" x="186" y="48">INVOICED PRICE</text>
+            <path class="l" d="M186 60H256"/>
+            <text class="n n--lg n--pulse" x="186" y="104">$57.00</text>
+          </svg>
+        </div>
+        <h3 class="tile__title">Pricing and contract errors</h3>
+        <p class="tile__text">Invoiced above the agreed price, rebate, or volume tier.</p>
+      </article>
+
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--disc" viewBox="0 0 300 150" aria-hidden="true">
+            <rect class="c" x="34" y="22" width="120" height="112" rx="4"/>
+            <path class="hook" d="M52 15V28M64 15V28"/>
+            <text class="t" x="46" y="46">2% DISCOUNT</text>
+            <path class="l" d="M46 56H140"/>
+            <path class="cell" d="M46 64h10v10H46zM62 64h10v10H62zM78 64h10v10H78zM94 64h10v10H94zM110 64h10v10h-10zM126 64h10v10h-10zM46 80h10v10H46zM62 80h10v10H62zM78 80h10v10H78zM94 80h10v10H94zM110 80h10v10h-10zM126 80h10v10h-10zM46 96h10v10H46zM62 96h10v10H62zM78 96h10v10H78z"/>
+            <rect class="cal-hl" x="45" y="79" width="12" height="12" rx="2"/>
+            <path class="d" d="M154 78H172"/>
+            <circle class="ring" cx="192" cy="78" r="19"/>
+            <path class="hand hand--m" d="M192 78V64"/>
+            <path class="hand" d="M192 78H200"/>
+            <path class="d" d="M211 78H244"/>
+            <path class="arr" d="M239 73L244 78L239 83"/>
+          </svg>
+        </div>
+        <h3 class="tile__title">Missed early-pay discounts</h3>
+        <p class="tile__text">Terms you earned and didn’t take.</p>
+      </article>
+
+      <article class="tile" data-reveal data-spot>
+        <div class="tile__art">
+          <svg class="ill ill--tax" viewBox="0 0 300 150" aria-hidden="true">
+            <rect class="c" x="20" y="16" width="152" height="118" rx="4"/>
+            <rect class="hl blink" x="26" y="102" width="140" height="21" rx="3"/>
+            <text class="t" x="32" y="42">SUBTOTAL</text><text class="n" x="160" y="42" text-anchor="end">$8,450.00</text>
+            <path class="sep" d="M32 52H160"/>
+            <text class="t" x="32" y="67">FREIGHT</text><text class="n" x="160" y="67" text-anchor="end">$320.00</text>
+            <path class="sep" d="M32 76H160"/>
+            <text class="t" x="32" y="91">FUEL SURCHARGE</text><text class="n" x="160" y="91" text-anchor="end">$185.00</text>
+            <text class="t t--amber" x="32" y="116">TAX</text><text class="n n--amber" x="160" y="116" text-anchor="end">$412.00</text>
+            <rect class="scan" x="24" y="22" width="144" height="1.5" rx=".75"/>
+            <path class="d" d="M172 75H202"/>
+            <path class="c" d="M206 40H238L252 54V112H206Z"/>
+            <path class="hook" d="M238 40V54H252"/>
+            <path class="pct" d="M220 86L238 64"/>
+            <circle class="pct" cx="221.5" cy="67.5" r="3.5"/>
+            <circle class="pct" cx="236.5" cy="82.5" r="3.5"/>
+            <path class="pct pct--l" d="M216 96H242M216 103H234"/>
+          </svg>
+        </div>
+        <h3 class="tile__title">Tax, freight and surcharges</h3>
+        <p class="tile__text">Tax on exempt items; fuel, accessorial and rate-card overbilling.</p>
+      </article>
+    </div>
+
+    <div class="mix" data-reveal>
+      <div class="mix__head">
+        <h3 class="mix__title">Typical claim mix in a first audit</h3>
+        <p class="mix__note">Industry pattern, not a promise. This is why we start with supplier statements, not duplicates.</p>
+      </div>
+      <div class="mix__bar" role="img" aria-label="Returns and credits about 40 percent, pricing about 20 percent, duplicates under 20 percent, the rest spread across discounts, tax and freight.">
+        <span class="mix__seg mix__seg--1" style="--w:40;--i:0"><i></i></span>
+        <span class="mix__seg mix__seg--2" style="--w:20;--i:1"><i></i></span>
+        <span class="mix__seg mix__seg--3" style="--w:18;--i:2"><i></i></span>
+        <span class="mix__seg mix__seg--4" style="--w:22;--i:3"><i></i></span>
+      </div>
+      <ul class="mix__legend">
+        <li><span class="sw sw--1"></span><b>~40%</b> Returns and credits</li>
+        <li><span class="sw sw--2"></span><b>~20%</b> Pricing</li>
+        <li><span class="sw sw--3"></span><b>&lt;20%</b> Duplicates</li>
+        <li><span class="sw sw--4"></span><b>Rest</b> Discounts, tax and freight</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== HOW IT WORKS ============================== -->
+<section class="section section--grey how" id="how">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>How it works</p>
+        <h2 class="h2 h2--xl" data-split><span class="nw">Find it.</span> <span class="nw">Recover it.</span> <span class="nw">Keep it.</span></h2>
+      </div>
+      <p class="sec-head__aside" data-reveal style="--d:120ms">A simple process.<br>Real cash back to your business.</p>
+    </div>
+
+    <ol class="steps" data-live data-stagger>
+      <li class="step" data-reveal>
+        <div class="step__top">
+          <span class="step__num" aria-hidden="true">01</span>
+          <div>
+            <h3 class="step__title">Scan</h3>
+            <span class="chip">Free</span>
+          </div>
+        </div>
+        <p class="step__text">Send a CSV export of 24–36 months of paid invoices, vendors and payments. No ERP access needed. In 10 business days you get every suspected overpayment, the evidence, and the estimated cash.</p>
+        <div class="step__art">
+          <svg class="ill ill--scan" viewBox="0 0 320 160" aria-hidden="true">
+            <rect class="c" x="20" y="14" width="74" height="100" rx="3"/>
+            <rect class="c" x="28" y="22" width="74" height="104" rx="3"/>
+            <rect class="c" x="36" y="30" width="80" height="116" rx="3"/>
+            <text class="csv" x="48" y="62">CSV</text>
+            <path class="tline" d="M48 78H104M48 89H104M48 100H104M48 111H104M48 122H92"/>
+            <path class="d" d="M126 86H170"/>
+            <path class="arr" d="M165 81L170 86L165 91"/>
+            <rect class="c" x="182" y="24" width="124" height="122" rx="4"/>
+            <path class="hd" d="M196 42H262"/>
+            <g class="rw" style="--i:0"><circle class="dot" cx="200" cy="64" r="3.2"/><path class="l" d="M210 64H272M282 64H292"/></g>
+            <g class="rw" style="--i:1"><circle class="dot" cx="200" cy="84" r="3.2"/><path class="l" d="M210 84H262M282 84H292"/></g>
+            <g class="rw" style="--i:2"><circle class="dot" cx="200" cy="104" r="3.2"/><path class="l" d="M210 104H272M282 104H292"/></g>
+            <g class="rw" style="--i:3"><circle class="dot" cx="200" cy="124" r="3.2"/><path class="l" d="M210 124H256M282 124H292"/></g>
+          </svg>
+        </div>
+        <p class="step__fine">Our matching engine looks for the patterns that cause overpayments; our analysts check each hit by hand before it reaches you.</p>
+      </li>
+
+      <li class="step" data-reveal>
+        <div class="step__top">
+          <span class="step__num" aria-hidden="true">02</span>
+          <div>
+            <h3 class="step__title">Recover</h3>
+            <span class="chip">20% of cash recovered</span>
+          </div>
+        </div>
+        <p class="step__text">We confirm each item with your team, contact the supplier, and follow up until a credit or refund hits your account. You approve every claim. We never move your money.</p>
+        <div class="step__art">
+          <svg class="ill ill--recover" viewBox="0 0 320 160" aria-hidden="true">
+            <rect class="c" x="18" y="18" width="70" height="98" rx="3"/>
+            <path class="l" d="M28 34H64M28 44H76M28 54H70"/>
+            <rect class="c" x="30" y="30" width="74" height="108" rx="3"/>
+            <path class="l" d="M40 48H80M40 58H94M40 68H88M40 78H94M40 88H72"/>
+            <circle class="ring" cx="98" cy="120" r="17"/>
+            <path class="tick" pathLength="1" d="M90 120.5L95.5 126L106 114.5"/>
+            <path class="d" d="M118 56H156"/>
+            <path class="arr" d="M151 51L156 56L151 61"/>
+            <path class="c" d="M164 30H228V74H188L177 84V74H164Z"/>
+            <path class="l" d="M175 44H216M175 54H208M175 64H198"/>
+            <path class="d" d="M232 120H124"/>
+            <path class="arr" d="M129 115L124 120L129 125"/>
+            <path class="c" d="M238 144V104L256 93V104L274 93V104L292 93V62H304V144Z"/>
+            <path class="hook" d="M230 144H312"/>
+            <path class="win" d="M248 120h7v7h-7zM262 120h7v7h-7zM276 120h7v7h-7zM290 120h7v7h-7z"/>
+          </svg>
+        </div>
+        <p class="step__fine">Fee invoiced only after the money is in your account. We never execute payments, change your master data, or contact a supplier you have not approved.</p>
+      </li>
+
+      <li class="step" data-reveal>
+        <div class="step__top">
+          <span class="step__num" aria-hidden="true">03</span>
+          <div>
+            <h3 class="step__title">Monitor</h3>
+            <span class="chip">From $3,500/month</span>
+          </div>
+        </div>
+        <p class="step__text">We check every new invoice before it’s paid: duplicates, pricing, credits and statement differences. Caught before the cash leaves.</p>
+        <div class="step__art">
+          <svg class="ill ill--monitor" viewBox="0 0 320 160" aria-hidden="true">
+            <rect class="c" x="12" y="16" width="214" height="128" rx="6"/>
+            <path class="hook" d="M12 36H226"/>
+            <circle class="wd" cx="24" cy="26" r="2.6"/><circle class="wd" cx="33" cy="26" r="2.6"/><circle class="wd" cx="42" cy="26" r="2.6"/>
+            <path class="l" d="M186 26H214"/>
+            <circle class="dot dot--muted" cx="28" cy="56" r="3"/><path class="l" d="M40 56H64M76 56H150M162 56H196"/>
+            <circle class="dot dot--muted" cx="28" cy="76" r="3"/><path class="l" d="M40 76H64M76 76H140M162 76H196"/>
+            <circle class="dot" cx="28" cy="96" r="3"/><path class="l" d="M40 96H64M76 96H150M162 96H196"/>
+            <circle class="dot" cx="28" cy="116" r="3"/><path class="l" d="M40 116H64M76 116H134M162 116H196"/>
+            <g class="lens">
+              <circle class="lens__glass" cx="176" cy="84" r="22"/>
+              <path class="lens__in" d="M165 84H188"/>
+              <path class="lens__h" d="M192 100L210 118"/>
+            </g>
+            <path class="d" d="M232 80H254"/>
+            <path class="arr" d="M249 75L254 80L249 85"/>
+            <rect class="c" x="262" y="44" width="50" height="72" rx="3"/>
+            <path class="l" d="M270 58H290M270 70H304M270 80H300M270 90H304M270 100H294"/>
+          </svg>
+        </div>
+        <p class="step__fine">Works with NetSuite, Microsoft Dynamics, SAP, Oracle, Sage Intacct, or file-based. Every month you get a report of money saved.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================== TIMELINE ============================== -->
+<section class="section section--navy timeline" id="timeline">
+  <div class="timeline__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow--dark" data-reveal>Timeline</p>
+        <h2 class="h2" data-split>Cash this quarter.</h2>
+      </div>
+      <div class="sec-head__aside sec-head__aside--dark" data-reveal style="--d:120ms">
+        <p>Clear steps. Measurable progress.</p>
+        <a class="link link--light" href="#pricing">View full pricing <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <div class="tl" data-timeline>
+    <div class="tl__track" aria-hidden="true"><span class="tl__fill"></span></div>
+    <ol class="tl__list">
+      <li class="tl__item"><span class="tl__node" aria-hidden="true"></span><p class="tl__when">Day 0</p><p class="tl__what">Data export</p><p class="tl__detail">One afternoon for your AP lead.</p></li>
+      <li class="tl__item"><span class="tl__node" aria-hidden="true"></span><p class="tl__when">Day 10</p><p class="tl__what">Findings report</p><p class="tl__detail">Every suspected overpayment, with a cash estimate.</p></li>
+      <li class="tl__item"><span class="tl__node" aria-hidden="true"></span><p class="tl__when">Days 10–30</p><p class="tl__what">Approve claims</p><p class="tl__detail">Your team confirms claims. We start supplier contact.</p></li>
+      <li class="tl__item"><span class="tl__node" aria-hidden="true"></span><p class="tl__when">Days 30–120</p><p class="tl__what">Credits and refunds</p><p class="tl__detail">Unused vendor credits land first, often within weeks, because the supplier already agrees the money is yours.</p></li>
+      <li class="tl__item"><span class="tl__node" aria-hidden="true"></span><p class="tl__when">Ongoing</p><p class="tl__what">Monitoring</p><p class="tl__detail">Monitoring stops new leaks before payment.</p></li>
+    </ol>
+    </div>
+
+    <div class="effort" data-reveal>
+      <p class="effort__title">What your team has to do</p>
+      <ul class="effort__list">
+        <li><b>Week 1</b><span>One person exports the data. About half a day.</span></li>
+        <li><b>Week 2</b><span>A 45-minute review of the findings report with us.</span></li>
+        <li><b>Weeks 3–16</b><span>Approve claims in batches. Answer the occasional supplier question.</span></li>
+        <li><b>Monitoring</b><span>Nothing new. Flags arrive inside the workflow your AP team already uses.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WHY ============================== -->
+<section class="section why" id="why">
+  <div class="container why__grid">
+    <div class="why__left">
+      <p class="eyebrow" data-reveal>Why Backcent</p>
+      <h2 class="display display--why" data-split>Software flags.<br><span class="teal">We recover.</span></h2>
+      <p class="why__lede" data-reveal>Built for companies with $100M–$1B+ in annual supplier spend.</p>
+      <div class="fit" data-reveal>
+        <p class="fit__title">You are a fit if</p>
+        <ul class="fit__list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your company spends $100M to $1B+ a year with suppliers.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>You run AP across more than one ERP, entity or location, or changed ERP in the last three years.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>You acquired a company and inherited its vendor master.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>You have hundreds of active suppliers and nobody reconciles their statements.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>You want cash this quarter, not a transformation project.</li>
+        </ul>
+      </div>
+      <p class="roles" data-reveal>CFOs <i></i> Controllers <i></i> Heads of AP</p>
+    </div>
+
+    <ol class="reasons" data-stagger>
+      <li class="reason" data-reveal data-spot>
+        <span class="reason__n">01</span>
+        <span class="reason__icon"><svg aria-hidden="true"><use href="#i-bars"/></svg></span>
+        <div>
+          <h3 class="reason__title">Big audit firms don’t call you back.</h3>
+          <p class="reason__text">The recovery-audit giants are built for billion-dollar accounts. We are built for $100M–$1B in supplier spend.</p>
+        </div>
+      </li>
+      <li class="reason" data-reveal data-spot>
+        <span class="reason__n">02</span>
+        <span class="reason__icon"><svg aria-hidden="true"><use href="#i-doc-check"/></svg></span>
+        <div>
+          <h3 class="reason__title">We do the recovery work.</h3>
+          <p class="reason__text">AP tools send alerts. We do the supplier calls, the paperwork and the follow-up until the money is back.</p>
+        </div>
+      </li>
+      <li class="reason" data-reveal data-spot>
+        <span class="reason__n">03</span>
+        <span class="reason__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div>
+          <h3 class="reason__title">No-risk pricing.</h3>
+          <p class="reason__text">No fee if we find nothing. No fee until the cash is in your bank.</p>
+        </div>
+      </li>
+      <li class="reason" data-reveal data-spot>
+        <span class="reason__n">04</span>
+        <span class="reason__icon"><svg aria-hidden="true"><use href="#i-refresh"/></svg></span>
+        <div>
+          <h3 class="reason__title">Prevention included.</h3>
+          <p class="reason__text">Most audits leave and the leak continues. Monitoring stops the same mistakes next quarter.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="container">
+    <div class="compare" data-reveal>
+      <h3 class="compare__title">How we compare</h3>
+      <div class="compare__table" role="table" aria-label="Backcent compared with the alternatives">
+        <div class="compare__row compare__row--head" role="row">
+          <span role="columnheader">The alternative</span><span role="columnheader">Its limit</span><span role="columnheader">What Backcent does instead</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell" class="compare__alt">Large recovery-audit firms</span>
+          <span role="cell" data-label="Its limit">Built for billion-dollar accounts; mid-market companies are not a priority.</span>
+          <span role="cell" data-label="Backcent" class="compare__us">Purpose-built for $100M–$1B in spend, with the same methods.</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell" class="compare__alt">AP automation software</span>
+          <span role="cell" data-label="Its limit">Checks invoices one at a time and sends alerts; someone still has to chase the money.</span>
+          <span role="cell" data-label="Backcent" class="compare__us">Checks three years at once, reconciles to supplier statements, and does the recovery work.</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell" class="compare__alt">Internal AP team</span>
+          <span role="cell" data-label="Its limit">Already full-time on paying invoices correctly; no time to look backwards.</span>
+          <span role="cell" data-label="Backcent" class="compare__us">An outside team and engine that looks backwards and forwards for you.</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell" class="compare__alt">Do nothing</span>
+          <span role="cell" data-label="Its limit">The benchmark leak of 0.1–0.3% of spend continues every year.</span>
+          <span role="cell" data-label="Backcent" class="compare__us">Free scan shows the number; you decide.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== INDUSTRIES ============================== -->
+<section class="industries" aria-labelledby="ind-title">
+  <div class="container">
+    <div class="industries__head">
+      <p class="eyebrow" id="ind-title" data-reveal>Where overpayments hide</p>
+      <p class="industries__note" data-reveal>Especially after an acquisition, an ERP change, or across multiple systems.</p>
+    </div>
+  </div>
+  <div class="industries__scroller">
+    <ul class="industries__list" data-stagger>
+      <li class="ind" data-reveal data-spot><span class="ind__icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span><h3>Distribution and wholesale</h3><p>High invoice volume, rebates and volume tiers, frequent returns and credits.</p></li>
+      <li class="ind" data-reveal data-spot><span class="ind__icon"><svg aria-hidden="true"><use href="#i-factory"/></svg></span><h3>Manufacturing</h3><p>Complex price lists, freight, raw-material surcharges, multiple plants.</p></li>
+      <li class="ind" data-reveal data-spot><span class="ind__icon"><svg aria-hidden="true"><use href="#i-health"/></svg></span><h3>Healthcare groups and multi-site services</h3><p>Many locations, many vendor records, roll-ups through acquisition.</p></li>
+      <li class="ind" data-reveal data-spot><span class="ind__icon"><svg aria-hidden="true"><use href="#i-bag"/></svg></span><h3>Retail and hospitality</h3><p>Thousands of SKUs, promotional pricing, CAM and lease charges, utilities.</p></li>
+      <li class="ind" data-reveal data-spot><span class="ind__icon"><svg aria-hidden="true"><use href="#i-hat"/></svg></span><h3>Construction and engineering</h3><p>Change orders, progress billing, subcontractor and material overcharges.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== PRICING ============================== -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal>Pricing</p>
+      <h2 class="h2" data-split>Simple. Public. No surprises.</h2>
+      <p class="sec-head__aside" data-reveal style="--d:120ms">Every customer starts with the free scan. You pay only from cash that reaches your bank.</p>
+    </div>
+
+    <div class="plans" data-live data-stagger>
+      <article class="plan" data-reveal data-spot>
+        <div class="plan__top">
+          <p class="plan__name">Recovery Audit</p>
+          <span class="plan__badge plan__badge--soft">Start here</span>
+        </div>
+        <p class="plan__price"><span class="plan__big">20%</span><span class="plan__unit">of cash recovered</span></p>
+        <p class="plan__for">Every new customer.</p>
+        <ul class="plan__list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>No setup fee, no minimum</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Invoiced only after funds arrive</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Human-verified claims</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free findings report either way</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>15% on spend above $1B</li>
+        </ul>
+        <a class="btn btn--primary btn--block" href="#scan">Start with a free scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="plan" data-reveal data-spot>
+        <div class="plan__top">
+          <p class="plan__name">Monitor</p>
+        </div>
+        <p class="plan__price"><span class="plan__big">$3,500</span><span class="plan__unit">/ month</span></p>
+        <p class="plan__for">Single-entity companies after a first audit.</p>
+        <ul class="plan__list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Up to 5,000 invoices a month, 1 ERP</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Duplicate, price, credit and tax checks before payment</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Monthly savings report</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cancel with 30 days’ notice</li>
+        </ul>
+        <a class="btn btn--ghost btn--block" href="#scan">Talk to us <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="plan plan--featured" data-reveal>
+        <div class="plan__top">
+          <p class="plan__name">Monitor + Statements</p>
+          <span class="plan__badge">Most popular</span>
+        </div>
+        <p class="plan__price"><span class="plan__big">$7,500</span><span class="plan__unit">/ month</span></p>
+        <p class="plan__for">Multi-entity, post-acquisition or post-ERP-change companies. Plus $5,000 one-time implementation.</p>
+        <ul class="plan__list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Up to 15,000 invoices a month, 2 ERPs</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Everything in Monitor</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Continuous supplier statement reconciliation</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Credit chasing</li>
+        </ul>
+        <a class="btn btn--light btn--block" href="#scan">Talk to us <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+
+    <div class="more" data-reveal>
+      <p class="more__title">More ways to work with us</p>
+      <ul class="more__list">
+        <li><div><h3>Managed AP</h3><p>Our team runs invoice capture, matching, coding and vendor queries inside your system. You keep approval and payment.</p></div><p class="more__price">from $9,000 / month<span>+ $10,000 implementation</span></p></li>
+        <li><div><h3>Second-pass audit</h3><p>For companies already audited by another firm. We look where the first pass did not, especially statement credits.</p></div><p class="more__price">30%<span>of cash recovered</span></p></li>
+        <li><div><h3>Add-on audits</h3><p>Sales and use tax, freight, utilities, lease and CAM charges.</p></div><p class="more__price">20–25%<span>contingency</span></p></li>
+      </ul>
+    </div>
+
+    <div class="guarantee" data-reveal>
+      <span class="guarantee__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+      <p class="guarantee__text"><b>The honest guarantee.</b> If the free scan finds nothing, you owe nothing and you keep the report.</p>
+      <div class="guarantee__ctas">
+        <a class="btn btn--primary" href="#scan">Start with a free scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="mailto:hello@backcent.com">Talk to us</a>
+      </div>
+    </div>
+
+    <div class="early" data-reveal data-live>
+      <div class="early__copy">
+        <p class="early__kicker"><span class="live" aria-hidden="true"></span>Early-access program</p>
+        <p class="early__text">Five design-partner slots open for Q1 2027. Design partners get the recovery audit at 15% and the first three months of monitoring free.</p>
+      </div>
+      <div class="early__slots" aria-label="Five design-partner slots">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <a class="btn btn--light" href="#scan">Apply for a slot <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ABOUT ============================== -->
+<section class="section section--grey about" id="about">
+  <div class="container about__grid">
+    <div class="about__copy">
+      <p class="eyebrow" data-reveal>About Backcent</p>
+      <h2 class="h2" data-split>A finance operations company, not a software vendor.</h2>
+      <p class="about__text" data-reveal>We combine recovery-audit practitioners with our own matching engine and a dedicated analyst team, so mid-market companies get the kind of audit that used to be reserved for the Fortune 500.</p>
+      <p class="about__text" data-reveal>We started Backcent because the biggest recovery-audit firms only serve the biggest companies, and AP software only sends alerts. The companies in between, with $100M to $1B in spend, were left to find their own money. That is where we work.</p>
+    </div>
+    <ul class="principles" data-stagger>
+      <li class="principle" data-reveal data-spot><span class="principle__icon"><svg aria-hidden="true"><use href="#i-layers"/></svg></span><h3>Statements first.</h3><p>The supplier’s own records are the fastest route to cash.</p></li>
+      <li class="principle" data-reveal data-spot><span class="principle__icon"><svg aria-hidden="true"><use href="#i-user-check"/></svg></span><h3>Humans check everything.</h3><p>The engine finds candidates; analysts confirm them before you ever see a claim.</p></li>
+      <li class="principle" data-reveal data-spot><span class="principle__icon"><svg aria-hidden="true"><use href="#i-bank"/></svg></span><h3>Cash is the only score.</h3><p>We report recovered dollars that reached your bank, not “identified” or “potential” savings.</p></li>
+      <li class="principle" data-reveal data-spot><span class="principle__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Prevent, don’t just recover.</h3><p>Every audit ends with the controls that stop the leak.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== SECURITY ============================== -->
+<section class="section section--navy security" id="security">
+  <div class="security__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow--dark" data-reveal>Security and trust</p>
+        <h2 class="h2" data-split>Built for finance teams that take security seriously.</h2>
+      </div>
+      <div class="vault" data-reveal data-live style="--d:120ms" aria-hidden="true">
+        <svg viewBox="0 0 240 240">
+          <circle class="vault__ring vault__ring--dash" cx="120" cy="120" r="112"/>
+          <circle class="vault__ring" cx="120" cy="120" r="86"/>
+          <circle class="vault__ring vault__ring--faint" cx="120" cy="120" r="60"/>
+          <g class="vault__orbit"><circle class="vault__dot" cx="120" cy="8" r="5"/></g>
+          <g class="vault__orbit vault__orbit--rev"><circle class="vault__dot vault__dot--small" cx="120" cy="34" r="3.5"/></g>
+          <g class="vault__orbit vault__orbit--slow"><circle class="vault__dot vault__dot--amber" cx="232" cy="120" r="3.5"/></g>
+          <circle class="vault__core" cx="120" cy="120" r="40"/>
+          <rect class="vault__lock" x="104" y="117" width="32" height="24" rx="5"/>
+          <path class="vault__lock" d="M110 117v-6a10 10 0 0 1 20 0v6M120 126v6"/>
+        </svg>
+      </div>
+    </div>
+
+    <ul class="controls" data-stagger>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-eye"/></svg></span><h3>Read-only access</h3><p>We never execute payments or change your records. Recovery is done through your approvals and your suppliers.</p></li>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-sign"/></svg></span><h3>NDA and DPA first</h3><p>Signed before any data is shared. UK and EU transfer terms available.</p></li>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Encryption</h3><p>Data encrypted in transit and at rest. Access limited to named analysts on your engagement.</p></li>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-trash"/></svg></span><h3>Data deletion</h3><p>Your data is deleted at project end on request, with written confirmation.</p></li>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-badge"/></svg></span><h3>SOC 2</h3><p>Type I underway; Type II planned within 12 months.</p></li>
+      <li class="control" data-reveal><span class="control__icon"><svg aria-hidden="true"><use href="#i-umbrella"/></svg></span><h3>Insurance</h3><p>Cyber and professional liability cover in place.</p></li>
+    </ul>
+
+    <p class="security__note" data-reveal>Questions for your IT or security team? Email <a href="mailto:security@backcent.com">security@backcent.com</a> and we will send the security questionnaire pack.</p>
+  </div>
+</section>
+
+<!-- ============================== FAQ ============================== -->
+<section class="section section--grey faq" id="faq">
+  <div class="container faq__grid">
+    <div class="faq__left">
+      <p class="eyebrow" data-reveal>FAQ</p>
+      <h2 class="display display--faq" data-split>Questions CFOs ask us.</h2>
+      <p class="faq__more" data-reveal>Something else? <a class="link" href="mailto:hello@backcent.com">hello@backcent.com <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+
+    <div class="faq__list" data-faq>
+      <div class="qa is-open" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="true" aria-controls="qa-1" id="qa-1-q">Is the scan really free?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-1-q"><div><p>Yes. The scan and the report are free. We charge 20% only on cash that reaches your bank.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-2-q">Do you need access to our ERP?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-2-q"><div><p>Not to start. A CSV export is enough. Monitoring needs a read-only connection.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-3-q">Will you contact our suppliers?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-3-q"><div><p>Only the ones you approve, in your name or ours. Your choice.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-4-q">We already use an AP automation tool. Why would you find anything?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-4-q"><div><p>Those tools check invoices one at a time as they arrive. We check three years at once and reconcile to supplier statements, which is where most of the money hides.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-5-q">A large audit firm already audited us.<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-5-q"><div><p>We do second-pass audits at 30% and routinely find what the first pass missed, especially statement credits.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-6-q">How long until we see cash?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-6-q"><div><p>First recoveries in 30–60 days are typical; most claims resolve within 120 days. Credits arrive faster than refunds.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-7" id="qa-7-q">Will this upset our suppliers?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-7-q"><div><p>No. We ask for what their own records show you are owed, politely and with evidence. Most suppliers settle credits without discussion.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-8" id="qa-8-q">How is our data protected?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-8" role="region" aria-labelledby="qa-8-q"><div><p>NDA and DPA first. Encryption in transit and at rest. Read-only. SOC 2 program in place. Deletion at project end on request.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-9" id="qa-9-q">What size company is this for?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-9" role="region" aria-labelledby="qa-9-q"><div><p>$100M+ in annual supplier spend. Below that, ask about a fixed-fee scan.</p></div></div>
+      </div>
+      <div class="qa" data-reveal>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-10" id="qa-10-q">What happens after the audit?<span class="qa__icon" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-10" role="region" aria-labelledby="qa-10-q"><div><p>You can stop there, or switch on monitoring so the same leaks are caught before payment next quarter.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FINAL CTA ============================== -->
+<section class="section cta" id="scan">
+  <svg class="cta__art cta__art--l" viewBox="0 0 320 640" aria-hidden="true" data-reveal>
+    <path class="a" d="M0 60H112V96H190V600H128"/>
+    <rect class="a" x="22" y="130" width="134" height="440"/>
+    <path class="a" d="M32 166H126M78 194H126M78 210H122M36 236H126M36 262H126M36 288H126M36 314H126M36 340H126M36 366H126M36 392H126M36 418H126"/>
+    <path class="am" d="M44 214H92"/>
+    <path class="a a--dash" d="M190 120V470M42 480H104"/>
+    <path class="a" d="M140 500A170 170 0 0 1 310 670"/>
+    <path class="a" d="M100 612H330M190 560V640"/>
+  </svg>
+  <svg class="cta__art cta__art--r" viewBox="0 0 320 640" aria-hidden="true" data-reveal>
+    <path class="a a--dash" d="M290 0V120"/>
+    <path class="a" d="M290 80A150 150 0 0 0 440 230"/>
+    <rect class="a" x="90" y="170" width="160" height="330"/>
+    <rect class="a" x="40" y="210" width="134" height="350"/>
+    <path class="am" d="M100 248H150"/>
+    <path class="a" d="M100 268H164M100 284H158M100 300H164M100 316H150M100 332H164M100 348H158M100 364H164M100 380H146M100 396H164"/>
+    <path class="am" d="M196 580H270"/>
+    <path class="a a--dash" d="M180 470V600M30 600H200"/>
+  </svg>
+
+  <div class="container cta__grid">
+    <div class="cta__copy">
+      <h2 class="display display--cta" data-split>See what you’re owed. <span class="teal">Free.</span></h2>
+      <p class="cta__lede" data-reveal>Send a 24–36-month AP export. Get a findings report in 10 business days. Keep 80% of everything we recover.</p>
+      <ol class="next" data-stagger>
+        <li data-reveal><span>1</span><div><b>NDA and DPA first.</b> Signed before any data is shared.</div></li>
+        <li data-reveal><span>2</span><div><b>Send the export.</b> Paid invoices, vendor master and payments. CSV or Excel is fine.</div></li>
+        <li data-reveal><span>3</span><div><b>Findings in 10 business days.</b> Each item with evidence, supplier, estimated cash and a confidence level.</div></li>
+      </ol>
+      <p class="cta__mail" data-reveal>
+        <a href="mailto:hello@backcent.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>hello@backcent.com</a>
+        <a href="mailto:security@backcent.com"><svg aria-hidden="true"><use href="#i-lock"/></svg>security@backcent.com</a>
+      </p>
+    </div>
+
+    <form class="form" data-form novalidate data-reveal style="--d:120ms">
+      <div class="form__body">
+        <h3 class="form__title">Get a free AP Leakage Scan</h3>
+        <p class="form__sub">Tell us a little about your AP. We reply with the NDA and next steps.</p>
+        <div class="form__grid">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <p class="field__err">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label for="f-email">Work email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+            <p class="field__err">Please enter a valid work email.</p>
+          </div>
+          <div class="field">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required>
+            <p class="field__err">Please enter your company.</p>
+          </div>
+          <div class="field">
+            <label for="f-spend">Annual supplier spend</label>
+            <select id="f-spend" name="spend" required>
+              <option value="" selected disabled>Select a range</option>
+              <option>Under $50M</option>
+              <option>$50–100M</option>
+              <option>$100–500M</option>
+              <option>$500M–1B</option>
+              <option>Over $1B</option>
+            </select>
+            <p class="field__err">Please choose a range.</p>
+          </div>
+          <div class="field field--full">
+            <label for="f-erp">ERP(s)</label>
+            <input id="f-erp" name="erp" type="text" placeholder="e.g. NetSuite, SAP">
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">Message <span class="opt">Optional</span></label>
+            <textarea id="f-msg" name="message" rows="3"></textarea>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--lg btn--block" type="submit"><span class="btn__label">Get a free AP Leakage Scan</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="form__fine">No setup fee · No software to install</p>
+      </div>
+      <div class="form__done" role="status" aria-live="polite" hidden>
+        <span class="form__done-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3>Thanks<span data-form-name></span>. We’ll be in touch.</h3>
+        <p>We’ll email you the NDA and DPA first, then a secure way to send your export.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="logo logo--light" href="#top" aria-label="Backcent, back to top">Back<span>cent</span></a>
+      <p class="footer__tag">Every cent back.</p>
+      <a class="footer__mail" href="mailto:hello@backcent.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>hello@backcent.com</a>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div>
+        <p class="footer__h">Explore</p>
+        <a href="#find">What we find</a><a href="#how">How it works</a><a href="#pricing">Pricing</a>
+      </div>
+      <div>
+        <p class="footer__h">Company</p>
+        <a href="#about">About</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="#scan">Contact</a>
+      </div>
+      <div>
+        <p class="footer__h">Legal</p>
+        <a href="#">Privacy policy</a><a href="#">Terms</a><a href="#">Data processing addendum</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container footer__legal">
+    <p>Backcent, Inc. · Delaware, USA · <a href="mailto:hello@backcent.com">hello@backcent.com</a></p>
+    <p>Benchmark figures are industry data, not Backcent results. Backcent does not provide legal, tax or audit-attest services.</p>
+    <p>© <span data-year>2026</span> Backcent, Inc.</p>
+  </div>
+  <p class="footer__mega" aria-hidden="true">Every <span>cent</span> back.</p>
+</footer>
+
+<div class="dock" data-dock>
+  <a class="btn btn--primary btn--block" href="#scan">Get a free AP Leakage Scan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</div>
+
+</body>
+</html>
